@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydro Tom Instal – Autoryzowany Serwis Vaillant i Brötje · Szczecin</title>
+<meta name="description" content="Hydro Tom Instal Szczecin – autoryzowany instalator Vaillant nr IA/110736 i serwis Brötje. Kotły CO, ogrzewanie podłogowe, pompy ciepła. Tel: 694 785 848.">
+<style>
+* , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green:  #15302000;
+  --g1:     #0E2218;
+  --g2:     #163526;
+  --g3:     #1D4733;
+  --mint:   #32A96A;
+  --mint2:  #3DBC78;
+  --gold:   #C8973A;
+  --cream:  #F3F2EE;
+  --white:  #FFFFFF;
+  --text:   #18281E;
+  --muted:  #4A6054;
+  --border: #D8DDD9;
+  --light:  #EBF0EC;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(14,34,24,.96);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 64px;
+  border-bottom: 1px solid rgba(50,169,106,.15);
+}
+.logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark {
+  width: 36px; height: 36px; background: var(--mint); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-text { color: #fff; font-size: 15px; font-weight: 800; letter-spacing: .03em; line-height: 1.1; }
+.logo-text small { display: block; font-size: 10px; font-weight: 400; color: rgba(255,255,255,.45); letter-spacing: .06em; text-transform: uppercase; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,.55); font-size: 13.5px; text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--mint); }
+.nav-cta {
+  background: var(--mint); color: #fff; padding: 9px 20px;
+  border-radius: 6px; font-size: 14px; font-weight: 700;
+  text-decoration: none; transition: background .15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-cta:hover { background: var(--mint2); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(14,34,24,.97) 0%, rgba(21,53,38,.93) 45%, rgba(14,34,24,.88) 100%),
+    url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80&auto=format') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 75% 50%, rgba(50,169,106,.12) 0%, transparent 55%);
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: 52px; align-items: center;
+  padding: 120px 5% 80px; width: 100%;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(50,169,106,.15); border: 1px solid rgba(50,169,106,.3);
+  color: var(--mint); font-size: 11.5px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 4px; margin-bottom: 22px;
+}
+.hero-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); flex-shrink: 0; }
+.hero h1 {
+  color: #fff; font-size: clamp(30px, 3.6vw, 52px);
+  font-weight: 900; line-height: 1.08; margin-bottom: 22px;
+}
+.hero h1 .line2 { color: var(--mint); display: block; }
+.hero h1 .line3 { color: rgba(255,255,255,.7); font-size: .72em; font-weight: 400; display: block; margin-top: 6px; }
+.hero-desc {
+  color: rgba(255,255,255,.58); font-size: 15.5px;
+  line-height: 1.75; margin-bottom: 34px; max-width: 430px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-mint {
+  background: var(--mint); color: #fff;
+  padding: 13px 26px; border-radius: 7px;
+  font-weight: 700; font-size: 15px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background .15s, transform .1s;
+}
+.btn-mint:hover { background: var(--mint2); transform: translateY(-1px); }
+.btn-ghost {
+  border: 1.5px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8);
+  padding: 12px 22px; border-radius: 7px; font-size: 15px;
+  text-decoration: none; transition: all .2s; display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--mint); background: rgba(50,169,106,.09); }
+
+/* Auth panel */
+.hero-panel { display: flex; flex-direction: column; gap: 16px; }
+.auth-panel {
+  background: rgba(255,255,255,.065);
+  border: 1px solid rgba(255,255,255,.11);
+  backdrop-filter: blur(8px);
+  border-radius: 16px; padding: 26px;
+}
+.auth-panel-title {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--mint); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.auth-panel-title::before { content: '🏆'; font-size: 14px; }
+
+/* Vaillant card */
+.brand-card {
+  border-radius: 10px; padding: 16px 18px;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 16px;
+  position: relative; overflow: hidden;
+}
+.brand-card:last-child { margin-bottom: 0; }
+.brand-card.vaillant {
+  background: linear-gradient(135deg, #003C20 0%, #005A30 100%);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.brand-card.broetje {
+  background: linear-gradient(135deg, #1A2E58 0%, #243D72 100%);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.brand-logo-wrap {
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 64px;
+}
+.brand-info { flex: 1; }
+.brand-name-text { color: #fff; font-size: 17px; font-weight: 900; letter-spacing: .04em; margin-bottom: 2px; }
+.brand-cert { color: rgba(255,255,255,.45); font-size: 11px; }
+.brand-badge {
+  background: rgba(255,255,255,.12); color: rgba(255,255,255,.8);
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  padding: 3px 8px; border-radius: 3px; text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Mini stats */
+.mini-stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.ms {
+  background: rgba(255,255,255,.05);
+  padding: 14px 8px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.ms:last-child { border-right: none; }
+.ms-val { color: var(--mint); font-size: 21px; font-weight: 900; }
+.ms-lbl { color: rgba(255,255,255,.38); font-size: 10.5px; margin-top: 2px; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--g2);
+  border-top: 1px solid rgba(50,169,106,.2);
+  border-bottom: 1px solid rgba(50,169,106,.1);
+  padding: 16px 5%;
+  display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+}
+.tb-item {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,.65); font-size: 13px;
+  padding: 6px 24px;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.tb-item:last-child { border-right: none; }
+.tb-dot { color: var(--mint); font-size: 16px; }
+
+/* ── SECTIONS ── */
+section { padding: 80px 5%; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mint); margin-bottom: 8px; }
+.sec-title { font-size: clamp(24px,3vw,36px); font-weight: 900; color: var(--g1); line-height: 1.2; margin-bottom: 12px; }
+.sec-sub { font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.75; }
+.sec-header { margin-bottom: 50px; }
+
+/* ── AUTORYZACJE FULL ── */
+#autoryzacje { background: var(--g1); }
+.auth-full-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.auth-full-card {
+  border-radius: 16px; padding: 36px;
+  border: 1px solid rgba(255,255,255,.08);
+  position: relative; overflow: hidden;
+}
+.auth-full-card.vaillant-card {
+  background: linear-gradient(145deg, #002E18 0%, #004826 60%, #003820 100%);
+}
+.auth-full-card.broetje-card {
+  background: linear-gradient(145deg, #0F1F42 0%, #172A5A 60%, #0F1F42 100%);
+}
+.auth-full-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 180px; height: 180px; border-radius: 50%;
+  opacity: .06;
+}
+.vaillant-card::before { background: #32A96A; }
+.broetje-card::before { background: #4B7FE0; }
+.auth-tag-pill {
+  display: inline-block; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 22px;
+}
+.vaillant-card .auth-tag-pill { background: rgba(50,169,106,.2); color: #3DBC78; }
+.broetje-card .auth-tag-pill { background: rgba(75,127,224,.2); color: #7BAAF0; }
+.auth-brand-logo { margin-bottom: 20px; }
+.auth-full-desc { color: rgba(255,255,255,.58); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+.cert-plate {
+  background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; padding: 10px 16px;
+  font-family: 'Courier New', monospace; font-size: 12px;
+  color: rgba(255,255,255,.5); letter-spacing: .08em; margin-bottom: 24px;
+}
+.cert-plate span { color: rgba(255,255,255,.25); }
+.auth-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.auth-perks li {
+  display: flex; gap: 10px; align-items: flex-start;
+  color: rgba(255,255,255,.68); font-size: 13.5px; line-height: 1.5;
+}
+.perk-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; flex-shrink: 0; margin-top: 1px;
+}
+.vaillant-card .perk-check { background: rgba(50,169,106,.2); color: #3DBC78; }
+.broetje-card .perk-check { background: rgba(75,127,224,.2); color: #7BAAF0; }
+
+/* ── USŁUGI ── */
+#uslugi { background: #fff; }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; }
+.svc-card {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 12px; padding: 26px;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.svc-card:hover {
+  border-color: var(--mint); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(50,169,106,.1);
+}
+.svc-icon-wrap {
+  width: 50px; height: 50px; border-radius: 12px;
+  background: var(--g1); display: flex; align-items: center;
+  justify-content: center; font-size: 24px; margin-bottom: 16px;
+}
+.svc-title { font-size: 16px; font-weight: 700; color: var(--g1); margin-bottom: 8px; }
+.svc-list { list-style: none; }
+.svc-list li {
+  font-size: 13px; color: var(--muted); padding: 3px 0;
+  display: flex; gap: 8px;
+}
+.svc-list li::before { content: '›'; color: var(--mint); font-weight: 800; flex-shrink: 0; }
+
+/* ── DLACZEGO ── */
+#dlaczego { background: var(--cream); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
+.why-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 26px;
+  transition: border-color .2s;
+}
+.why-card:hover { border-color: var(--mint); }
+.why-icon-wrap {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--light); display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 14px;
+}
+.why-title { font-size: 15px; font-weight: 700; color: var(--g1); margin-bottom: 6px; }
+.why-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── MARKI STRIP ── */
+.brands-strip { background: var(--g1); padding: 52px 5%; }
+.brands-strip-title {
+  text-align: center; color: rgba(255,255,255,.35);
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: 36px;
+}
+.brands-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; flex-wrap: wrap;
+}
+.brand-pill {
+  padding: 14px 28px; border-right: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+}
+.brand-pill:last-child { border-right: none; }
+.brand-pill.featured { opacity: 1; }
+.brand-pill.plain { opacity: .35; }
+.brand-pill.plain:hover { opacity: .6; transition: opacity .2s; }
+
+/* ── OPINIE ── */
+#opinie { background: #fff; }
+.r-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
+.r-card {
+  background: var(--light); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.r-card:hover { border-color: var(--mint); box-shadow: 0 4px 16px rgba(50,169,106,.08); }
+.r-stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
+.r-quote { color: var(--muted); font-size: 14px; line-height: 1.75; font-style: italic; margin-bottom: 18px; }
+.r-foot { display: flex; align-items: center; gap: 10px; }
+.r-av {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--g1); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.r-name { font-weight: 700; font-size: 13px; color: var(--g1); }
+.r-src { font-size: 11.5px; color: #aaa; }
+
+/* ── KONTAKT ── */
+#kontakt { background: var(--g1); }
+.k-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.k-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+.k-icon {
+  width: 46px; height: 46px; border-radius: 11px;
+  background: rgba(50,169,106,.12); border: 1px solid rgba(50,169,106,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.k-lbl { font-size: 10.5px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .07em; }
+.k-val { font-size: 15px; font-weight: 700; color: #fff; margin-top: 3px; }
+.k-val a { color: #fff; text-decoration: none; transition: color .2s; }
+.k-val a:hover { color: var(--mint); }
+.k-note { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
+.k-panel {
+  background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px; padding: 30px;
+}
+.k-panel-title { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+.k-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.k-tag {
+  font-size: 13px; padding: 5px 13px; border-radius: 20px;
+  font-weight: 600;
+}
+.k-tag.auth { background: rgba(50,169,106,.15); color: var(--mint); border: 1px solid rgba(50,169,106,.25); }
+.k-tag.plain { background: rgba(255,255,255,.05); color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.07); font-weight: 400; }
+.k-divider { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 18px 0; }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--mint); padding: 68px 5%; text-align: center;
+}
+.cta-section h2 { color: #fff; font-size: clamp(22px,3vw,36px); font-weight: 900; margin-bottom: 10px; }
+.cta-section p { color: rgba(255,255,255,.75); font-size: 15px; margin-bottom: 30px; }
+.btn-dark {
+  background: var(--g1); color: #fff; padding: 14px 34px;
+  border-radius: 7px; font-weight: 800; font-size: 16px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 9px;
+  transition: background .15s;
+}
+.btn-dark:hover { background: var(--g2); }
+
+/* ── FOOTER ── */
+footer {
+  background: #080F0A; padding: 28px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.f-logo { color: #fff; font-weight: 800; font-size: 15px; }
+.f-logo span { color: var(--mint); }
+.f-copy { color: rgba(255,255,255,.25); font-size: 12px; }
+.f-links { display: flex; gap: 18px; }
+.f-links a { color: rgba(255,255,255,.3); font-size: 13px; text-decoration: none; }
+.f-links a:hover { color: var(--mint); }
+
+/* ── RIBBON ── */
+.ribbon {
+  position: fixed; bottom: 20px; right: 20px; z-index: 999;
+  background: rgba(8,15,10,.92); color: #fff;
+  padding: 9px 16px; border-radius: 8px; font-size: 12px;
+  border: 1px solid rgba(50,169,106,.25);
+  display: flex; align-items: center; gap: 8px;
+  backdrop-filter: blur(8px);
+}
+.rd { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+@media(max-width:768px) {
+  .hero-inner,.auth-full-grid,.k-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .hero { min-height:auto; }
+  .tb-item { border-right:none; border-bottom:1px solid rgba(255,255,255,.06); width:100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo-wrap">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2C10 2 4 6 4 11.5C4 14.985 6.686 17.5 10 17.5C13.314 17.5 16 14.985 16 11.5C16 6 10 2 10 2Z" fill="white"/>
+        <path d="M10 8C10 8 7 10.5 7 12.5C7 14.157 8.343 15.5 10 15.5C11.657 15.5 13 14.157 13 12.5C13 10.5 10 8 10 8Z" fill="rgba(14,34,24,.6)"/>
+      </svg>
+    </div>
+    <div class="logo-text">HYDRO TOM INSTAL <small>Szczecin · od 2012</small></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#autoryzacje">Autoryzacje</a></li>
+    <li><a href="#uslugi">Usługi</a></li>
+    <li><a href="#dlaczego">O nas</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="tel:694785848" class="nav-cta">📞 694 785 848</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="hero-label">Instalacje grzewcze i hydrauliczne · Szczecin</span>
+      <h1>
+        Ciepło w Twoim domu.<br>
+        <span class="line2">Autoryzowany montaż</span>
+        <span class="line3">Vaillant · Brötje · i inne wiodące marki</span>
+      </h1>
+      <p class="hero-desc">
+        Kotły CO, ogrzewanie podłogowe, pompy ciepła, instalacje gazowe.
+        Jako autoryzowany instalator Vaillant wykonujemy montaż z pełną gwarancją producenta.
+        Wycena na miejscu — bezpłatnie.
+      </p>
+      <div class="hero-btns">
+        <a href="tel:694785848" class="btn-mint">📞 Zadzwoń: 694 785 848</a>
+        <a href="#uslugi" class="btn-ghost">Zobacz ofertę</a>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="auth-panel">
+        <div class="auth-panel-title">Autoryzacje producenta</div>
+
+        <!-- Vaillant brand card -->
+        <div class="brand-card vaillant">
+          <div class="brand-logo-wrap">
+            <!-- Vaillant logo SVG - characteristic shield shape -->
+            <svg width="54" height="48" viewBox="0 0 54 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M27 2L4 10V26C4 36.5 14.5 44.5 27 46C39.5 44.5 50 36.5 50 26V10L27 2Z" fill="#008A3C"/>
+              <path d="M27 6L8 13V26C8 34.5 16.5 41.5 27 43C37.5 41.5 46 34.5 46 26V13L27 6Z" fill="#005C28"/>
+              <text x="27" y="29" text-anchor="middle" fill="white" font-size="13" font-weight="900" font-family="Arial,sans-serif" letter-spacing="-.5">vaillant</text>
+              <path d="M14 18L27 24L40 18" stroke="white" stroke-width="1.5" stroke-opacity=".3" fill="none"/>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <div class="brand-name-text">Vaillant</div>
+            <div class="brand-cert">Autoryzowany Instalator</div>
+            <div class="brand-cert">Nr IA/110736</div>
+          </div>
+          <div class="brand-badge">AUTH</div>
+        </div>
+
+        <!-- Brötje brand card -->
+        <div class="brand-card broetje">
+          <div class="brand-logo-wrap">
+            <!-- Brötje logo SVG - wordmark with blue bar -->
+            <svg width="60" height="36" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="60" height="36" rx="4" fill="#1A3470"/>
+              <rect x="0" y="26" width="60" height="10" rx="0" fill="#2B5ABA" rx="4"/>
+              <rect x="0" y="26" width="60" height="10" fill="#2B5ABA"/>
+              <rect x="0" y="30" width="60" height="6" rx="0"/>
+              <rect x="0" y="26" width="60" height="10" rx="3" fill="#2B5ABA"/>
+              <text x="30" y="20" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="Arial,sans-serif" letter-spacing="1">BRÖTJE</text>
+              <text x="30" y="33" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="7" font-family="Arial,sans-serif" letter-spacing="1.5">HEIZUNG</text>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <div class="brand-name-text">Brötje</div>
+            <div class="brand-cert">Autoryzowany Serwis</div>
+            <div class="brand-cert">Gwar. i pogwarancyjny</div>
+          </div>
+          <div class="brand-badge">AUTH</div>
+        </div>
+      </div>
+
+      <div class="mini-stats">
+        <div class="ms"><div class="ms-val">12+</div><div class="ms-lbl">lat działalności</div></div>
+        <div class="ms"><div class="ms-val">5.0★</div><div class="ms-lbl">ocena Google</div></div>
+        <div class="ms"><div class="ms-val">2×</div><div class="ms-lbl">autoryzacje</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="tb-item"><span class="tb-dot">✓</span> Wycena na miejscu — bezpłatna</div>
+  <div class="tb-item"><span class="tb-dot">✓</span> Montaż z gwarancją producenta</div>
+  <div class="tb-item"><span class="tb-dot">✓</span> Protokoły szczelności</div>
+  <div class="tb-item"><span class="tb-dot">✓</span> Szczecin i okolice</div>
+  <div class="tb-item"><span class="tb-dot">✓</span> Faktury VAT</div>
+</div>
+
+<!-- AUTORYZACJE FULL -->
+<section id="autoryzacje">
+  <div class="sec-header" style="text-align:center; margin-bottom:44px;">
+    <p class="eyebrow" style="justify-content:center; display:flex;">Certyfikaty i autoryzacje</p>
+    <h2 class="sec-title" style="color:#fff; max-width:560px; margin:0 auto 12px;">Autoryzowany partner Vaillant i Brötje</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.45); margin:0 auto;">To nie zwykły hydraulik — to certyfikowany instalator i serwisant dwóch czołowych producentów kotłów w Europie.</p>
+  </div>
+  <div class="auth-full-grid">
+
+    <!-- Vaillant full card -->
+    <div class="auth-full-card vaillant-card">
+      <span class="auth-tag-pill">✓ Autoryzowany Instalator</span>
+      <div class="auth-brand-logo">
+        <svg width="140" height="52" viewBox="0 0 140 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shield icon -->
+          <path d="M24 4L6 11V24C6 33 13.5 40 24 42C34.5 40 42 33 42 24V11L24 4Z" fill="#00A04A"/>
+          <path d="M24 8L10 14V24C10 31 16.5 37 24 39C31.5 37 38 31 38 24V14L24 8Z" fill="#007A36"/>
+          <path d="M16 22L24 26L32 22" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <text x="24" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Arial Black,Arial,sans-serif" letter-spacing="-.3">vaillant</text>
+          <!-- Wordmark -->
+          <text x="56" y="24" fill="white" font-size="22" font-weight="900" font-family="Arial Black,Arial,sans-serif" letter-spacing="-.5">vaillant</text>
+          <text x="56" y="40" fill="rgba(255,255,255,.4)" font-size="10" font-family="Arial,sans-serif" letter-spacing="1">GROUP</text>
+        </svg>
+      </div>
+      <p class="auth-full-desc">
+        Posiadamy oficjalną autoryzację Vaillant jako instalator. Oznacza to, że montaż kotłów i urządzeń grzewczych Vaillant wykonujemy zgodnie z wymogami producenta — z zachowaniem pełnej gwarancji fabrycznej dla klienta.
+      </p>
+      <div class="cert-plate"><span>Nr certyfikatu:</span> IA/110736</div>
+      <ul class="auth-perks">
+        <li><span class="perk-check">✓</span>Pełna gwarancja fabryczna producenta</li>
+        <li><span class="perk-check">✓</span>Rejestracja urządzenia w systemie Vaillant</li>
+        <li><span class="perk-check">✓</span>Oryginalne części zamienne i materiały</li>
+        <li><span class="perk-check">✓</span>Montaż zgodny ze standardami technicznymi producenta</li>
+      </ul>
+    </div>
+
+    <!-- Brötje full card -->
+    <div class="auth-full-card broetje-card">
+      <span class="auth-tag-pill">✓ Autoryzowany Serwis</span>
+      <div class="auth-brand-logo">
+        <svg width="150" height="52" viewBox="0 0 150 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="4" width="80" height="44" rx="6" fill="#1D3A7A"/>
+          <text x="40" y="32" text-anchor="middle" fill="white" font-size="16" font-weight="900" font-family="Arial Black,Arial,sans-serif" letter-spacing="1.5">BRÖTJE</text>
+          <rect x="0" y="38" width="80" height="10" rx="0" fill="#2B5EC0"/>
+          <rect x="0" y="36" width="80" height="12" rx="3" fill="#2B5EC0"/>
+          <text x="40" y="45" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="7.5" font-family="Arial,sans-serif" letter-spacing="2">HEIZUNG</text>
+          <!-- Wordmark continuation -->
+          <text x="92" y="30" fill="white" font-size="13" font-weight="700" font-family="Arial,sans-serif" fill-opacity=".45">Serwis</text>
+          <text x="92" y="46" fill="white" font-size="11" font-weight="400" font-family="Arial,sans-serif" fill-opacity=".3">autoryzowany</text>
+        </svg>
+      </div>
+      <p class="auth-full-desc">
+        Autoryzowany serwis Brötje to gwarancja, że naprawy i przeglądy wykonujemy zgodnie z wymaganiami producenta — z oryginalnym oprzyrządowaniem diagnostycznym i oryginalnymi częściami zamiennymi.
+      </p>
+      <ul class="auth-perks">
+        <li><span class="perk-check">✓</span>Serwis gwarancyjny i pogwarancyjny</li>
+        <li><span class="perk-check">✓</span>Oryginalne części zamienne Brötje</li>
+        <li><span class="perk-check">✓</span>Przeglądy zgodne z wymogami producenta</li>
+        <li><span class="perk-check">✓</span>Protokoły wymagane do utrzymania gwarancji kotła</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- USŁUGI -->
+<section id="uslugi">
+  <div class="sec-header">
+    <p class="eyebrow">Oferta</p>
+    <h2 class="sec-title">Pełen zakres instalacji</h2>
+    <p class="sec-sub">Od wymiany kotła po nowoczesne pompy ciepła — kompleksowo, z gwarancją i dokumentacją.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔥</div>
+      <div class="svc-title">Kotły i podgrzewacze</div>
+      <ul class="svc-list">
+        <li>Wymiana i montaż kotłów CO</li>
+        <li>Kotłownie: gaz, olej, paliwo stałe</li>
+        <li>Serwis gwarancyjny i pogwarancyjny</li>
+        <li>Autoryzacja: Vaillant i Brötje</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🌡️</div>
+      <div class="svc-title">Centralne ogrzewanie</div>
+      <ul class="svc-list">
+        <li>Instalacje C.O.</li>
+        <li>Ogrzewanie podłogowe</li>
+        <li>Kominki z płaszczem wodnym</li>
+        <li>Systemy solarne i kolektory</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">♻️</div>
+      <div class="svc-title">Pompy ciepła i klimatyzacja</div>
+      <ul class="svc-list">
+        <li>Montaż pomp ciepła</li>
+        <li>Klimatyzatory — montaż i serwis</li>
+        <li>Systemy wentylacji z odzyskiem ciepła</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🔩</div>
+      <div class="svc-title">Instalacje gazowe</div>
+      <ul class="svc-list">
+        <li>Instalacje i przyłącza gazowe</li>
+        <li>Przeglądy i protokoły szczelności</li>
+        <li>Montaż kuchni i urządzeń gazowych</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🚰</div>
+      <div class="svc-title">Wodno-kanalizacyjne</div>
+      <ul class="svc-list">
+        <li>Instalacje wod-kan</li>
+        <li>Przyłącza kanalizacyjne</li>
+        <li>Wymiana wodomierzy</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon-wrap">🚿</div>
+      <div class="svc-title">Łazienki i sanitarne</div>
+      <ul class="svc-list">
+        <li>Montaż kabin prysznicowych</li>
+        <li>Montaż urządzeń sanitarnych</li>
+        <li>Serwis spłuczek podtynkowych</li>
+        <li>Baterie i panele prysznicowe</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MARKI STRIP -->
+<div class="brands-strip">
+  <div class="brands-strip-title">Instalujemy i serwisujemy urządzenia czołowych marek</div>
+  <div class="brands-logos">
+    <div class="brand-pill featured">
+      <svg width="80" height="28" viewBox="0 0 80 28" fill="none">
+        <path d="M22 2L10 7V14C10 19.5 15.5 23 22 24C28.5 23 34 19.5 34 14V7L22 2Z" fill="#00A04A"/>
+        <path d="M22 5L13 9V14C13 18 17 21.5 22 22.5C27 21.5 31 18 31 14V9L22 5Z" fill="#007A36"/>
+        <text x="22" y="17" text-anchor="middle" fill="white" font-size="6" font-weight="800" font-family="Arial,sans-serif">vaillant</text>
+        <text x="44" y="17" fill="white" font-size="14" font-weight="900" font-family="Arial Black,sans-serif" letter-spacing="-.3">vaillant</text>
+      </svg>
+    </div>
+    <div class="brand-pill featured">
+      <svg width="70" height="28" viewBox="0 0 70 28" fill="none">
+        <rect x="0" y="2" width="70" height="24" rx="4" fill="#1D3A7A"/>
+        <text x="35" y="17" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="Arial Black,sans-serif" letter-spacing="1">BRÖTJE</text>
+        <rect x="0" y="20" width="70" height="6" rx="2" fill="#2B5EC0"/>
+        <text x="35" y="25" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="5.5" font-family="Arial,sans-serif" letter-spacing="1.5">HEIZUNG</text>
+      </svg>
+    </div>
+    <div class="brand-pill plain"><span style="color:rgba(255,255,255,.5);font-size:14px;font-weight:700;letter-spacing:1px">Kerra</span></div>
+    <div class="brand-pill plain"><span style="color:rgba(255,255,255,.5);font-size:13px;font-weight:700;letter-spacing:.5px">Novoterm</span></div>
+    <div class="brand-pill plain"><span style="color:rgba(255,255,255,.5);font-size:13px;font-weight:700;">Valsir</span></div>
+    <div class="brand-pill plain"><span style="color:rgba(255,255,255,.5);font-size:13px;font-weight:700;">Loge</span></div>
+  </div>
+</div>
+
+<!-- DLACZEGO -->
+<section id="dlaczego">
+  <div class="sec-header">
+    <p class="eyebrow">Dlaczego my?</p>
+    <h2 class="sec-title">Fachowiec z certyfikatem — nie przypadkowy hydraulik</h2>
+    <p class="sec-sub">Autoryzacje to dowód inwestycji w wiedzę i narzędzia — klient dostaje lepszy montaż i pełniejszą gwarancję.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon-wrap">🏆</div>
+      <div class="why-title">Działamy od 2012 roku</div>
+      <p class="why-desc">Ponad 12 lat doświadczenia w instalacjach grzewczych, sanitarnych i gazowych na terenie Szczecina i okolic.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">🔐</div>
+      <div class="why-title">2 autoryzacje producenta</div>
+      <p class="why-desc">Jedni z niewielu w regionie z autoryzacją Vaillant i Brötje jednocześnie — pełna gwarancja fabryczna przy każdym montażu.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">📋</div>
+      <div class="why-title">Protokoły szczelności</div>
+      <p class="why-desc">Sporządzamy wymagane protokoły szczelności instalacji gazowych — niezbędne do uruchomienia i zachowania ubezpieczenia.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">⭐</div>
+      <div class="why-title">Ocena 5/5 na Google Maps</div>
+      <p class="why-desc">Wszyscy klienci, którzy wystawili opinię, wybrali 5 gwiazdek. „Dobry fachowiec" — to słyszymy najczęściej.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">📄</div>
+      <div class="why-title">Faktury VAT</div>
+      <p class="why-desc">Wystawiamy faktury VAT — idealne dla firm, wspólnot mieszkaniowych i każdego, kto potrzebuje dokumentacji.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">🗺️</div>
+      <div class="why-title">Szczecin i okolice</div>
+      <p class="why-desc">Obsługujemy Szczecin i województwo zachodniopomorskie. Wycena na miejscu bez dodatkowych opłat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section id="opinie">
+  <div class="sec-header">
+    <p class="eyebrow">Opinie klientów</p>
+    <h2 class="sec-title">Co mówią o naszej pracy</h2>
+    <p class="sec-sub">Ocena 5.0 na Google Maps — rzetelność potwierdzona przez klientów ze Szczecina.</p>
+  </div>
+  <div class="r-grid">
+    <div class="r-card">
+      <div class="r-stars">★★★★★</div>
+      <p class="r-quote">"Polecam — dobry fachowiec. Przyszedł punktualnie, wykonał robotę solidnie, cena zgodna z wyceną. Nie trzeba nic poprawiać."</p>
+      <div class="r-foot">
+        <div class="r-av">MK</div>
+        <div><div class="r-name">Klient Google Maps</div><div class="r-src">Opinia zweryfikowana</div></div>
+      </div>
+    </div>
+    <div class="r-card">
+      <div class="r-stars">★★★★★</div>
+      <p class="r-quote">"Wymiana kotła Vaillant — wszystko wyjaśnione, urządzenie zarejestrowane z gwarancją producenta. Profesjonalna obsługa."</p>
+      <div class="r-foot">
+        <div class="r-av" style="background:#1D3A7A;">AW</div>
+        <div><div class="r-name">Klient Google Maps</div><div class="r-src">Opinia zweryfikowana</div></div>
+      </div>
+    </div>
+    <div class="r-card">
+      <div class="r-stars">★★★★★</div>
+      <p class="r-quote">"Ogrzewanie podłogowe w całym domu — świetna robota, termin dotrzymany, po sobie posprzątane. Na pewno wrócimy."</p>
+      <div class="r-foot">
+        <div class="r-av" style="background:#00703A;">PB</div>
+        <div><div class="r-name">Klient Google Maps</div><div class="r-src">Opinia zweryfikowana</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="sec-header">
+    <p class="eyebrow" style="color:var(--mint)">Kontakt</p>
+    <h2 class="sec-title" style="color:#fff">Wycena bezpłatna — przyjedziemy i ocenimy</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.45)">Zadzwoń lub napisz. Odpowiadamy tego samego dnia.</p>
+  </div>
+  <div class="k-grid">
+    <div>
+      <div class="k-item">
+        <div class="k-icon">📞</div>
+        <div>
+          <div class="k-lbl">Telefon</div>
+          <div class="k-val"><a href="tel:694785848">694 785 848</a></div>
+          <div class="k-note">Najszybszy kontakt</div>
+        </div>
+      </div>
+      <div class="k-item">
+        <div class="k-icon">✉️</div>
+        <div>
+          <div class="k-lbl">E-mail</div>
+          <div class="k-val"><a href="mailto:kontakt@tominstal.com.pl">kontakt@tominstal.com.pl</a></div>
+          <div class="k-note">Odpowiedź tego samego dnia</div>
+        </div>
+      </div>
+      <div class="k-item">
+        <div class="k-icon">📍</div>
+        <div>
+          <div class="k-lbl">Adres</div>
+          <div class="k-val">ul. Druckiego-Lubeckiego 18/2<br>71-643 Szczecin</div>
+        </div>
+      </div>
+      <div class="k-item">
+        <div class="k-icon">🌐</div>
+        <div>
+          <div class="k-lbl">WWW</div>
+          <div class="k-val"><a href="http://tominstal.com.pl">tominstal.com.pl</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="k-panel">
+      <div class="k-panel-title">Marki, które serwisujemy i instalujemy</div>
+      <div class="k-tags">
+        <span class="k-tag auth">Vaillant ★ Autoryzacja</span>
+        <span class="k-tag auth">Brötje ★ Autoryzacja</span>
+        <span class="k-tag plain">Kerra</span>
+        <span class="k-tag plain">Novoterm</span>
+        <span class="k-tag plain">Valsir</span>
+        <span class="k-tag plain">Loge</span>
+      </div>
+      <hr class="k-divider">
+      <p style="font-size:13px;color:rgba(255,255,255,.38);margin-bottom:18px;line-height:1.7;">
+        Instalujemy urządzenia grzewcze z pełną dokumentacją i gwarancją. Obsługujemy wspólnoty mieszkaniowe, deweloperów i klientów prywatnych.
+      </p>
+      <a href="tel:694785848" class="btn-mint" style="font-size:14px;padding:12px 22px;">
+        📞 Zadzwoń: 694 785 848
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Potrzebujesz kotła, ogrzewania podłogowego lub serwisu?</h2>
+  <p>Wycena na miejscu — bezpłatna. Autoryzowany montaż z gwarancją producenta.</p>
+  <a href="tel:694785848" class="btn-dark">📞 Zadzwoń: 694 785 848</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">HYDRO <span>TOM</span> INSTAL</div>
+  <div class="f-copy">© 2025 Hydro Tom Instal – Tomasz Ciesielski · ul. Druckiego-Lubeckiego 18, Szczecin</div>
+  <div class="f-links">
+    <a href="mailto:kontakt@tominstal.com.pl">E-mail</a>
+    <a href="http://tominstal.com.pl" target="_blank">Stara strona</a>
+  </div>
+</footer>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <div class="rd"></div>
+  Strona demo — Hydro Tom Instal
+</div>
+
+</body>
+</html>
